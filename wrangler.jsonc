@@ -1,9 +1,34 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "talk2quote",
+  "account_id": "0ca96d9dd86de8e24ea72edf6d36caf6",
   "compatibility_date": "2026-08-17",
   "assets": {
     "directory": "./",
     "not_found_handling": "404-page"
   }
+
+  // ── Future server-side logic (not active — reference only) ──────────────
+  // This site currently has no Worker script (no "main" entry), so it's
+  // pure static hosting. If you ever need server-side logic (e.g. a contact
+  // form handler, an API call using a private key), you'll need to add:
+  //
+  // 1. A "main" entry pointing at your Worker script, e.g.:
+  //      "main": "src/index.js"
+  //
+  // 2. A KV namespace binding, if you need persistent key-value storage.
+  //    First create the namespace with `wrangler kv namespace create <NAME>`
+  //    (this returns a real namespace id), then bind it:
+  //      "kv_namespaces": [
+  //        { "binding": "MY_KV", "id": "<namespace-id-from-step-above>" }
+  //      ]
+  //
+  // 3. Secrets for any private keys/tokens the Worker needs at runtime.
+  //    These are never committed to the repo — set them with:
+  //      wrangler secret put MY_SECRET_NAME
+  //    (this requires Cloudflare account access)
+  //
+  // IMPORTANT: creating KV namespaces and setting secrets requires access to
+  // the Cloudflare account. Contact Dom before adding any of the above —
+  // he'll either set it up or grant the necessary account access.
 }
