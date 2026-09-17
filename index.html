@@ -122,7 +122,7 @@
   .btn-secondary{
     background:#fff;color:var(--ink);font-weight:600;font-size:14px;
     padding:14px 22px;border-radius:999px;border:1.5px solid var(--border);
-    display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;
   }
   .btn-secondary:active{transform:scale(.98);}
   .play-dot{
@@ -143,7 +143,7 @@
   .store-badges img{height:40px;width:auto;border-radius:6px;}
 
   /* Phone mockup */
-  .hero-right{flex-shrink:0;display:flex;align-items:flex-start;justify-content:center;}
+  .hero-right{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:24px;}
   .phone{
     width:300px;background:var(--ink);border-radius:38px;padding:12px;
     box-shadow:0 30px 60px rgba(0,0,0,.25);
@@ -180,31 +180,6 @@
   .btn-check{
     background:var(--teal);color:#fff;font-weight:700;font-size:14px;
     text-align:center;padding:13px;border-radius:12px;
-  }
-
-  /* Video modal */
-  .video-modal{
-    display:none;position:fixed;inset:0;z-index:1000;
-    background:rgba(0,0,0,.8);
-    align-items:center;justify-content:center;
-    padding:20px;
-  }
-  .video-modal.open{display:flex;}
-  .video-modal-inner{
-    background:#000;border-radius:14px;overflow:hidden;
-    position:relative;box-shadow:0 20px 60px rgba(0,0,0,.5);
-  }
-  /* Video is a vertical (9:16) YouTube Short — size the modal to match instead of a wide 16:9 box */
-  .video-modal-frame-wrap{
-    position:relative;
-    aspect-ratio:9/16;
-    width:min(92vw, calc(85vh * 9 / 16), 440px);
-  }
-  .video-modal-frame-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
-  .video-modal-close{
-    position:absolute;top:-44px;right:0;background:rgba(255,255,255,.15);color:#fff;
-    border:none;width:34px;height:34px;border-radius:50%;font-size:18px;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
   }
 
   /* Store picker modal — shown when we can't reliably detect a mobile OS */
@@ -270,9 +245,9 @@
     .proof-row{flex-direction:column;align-items:flex-start;gap:18px;}
     .store-badges img{height:38px;}
 
+    .hero-right{width:100%;}
     .phone{width:100%;max-width:300px;}
-
-    .video-modal-close{top:-40px;}
+    .hero-right .btn-secondary{max-width:300px;}
   }
 
   @media (max-width:360px){
@@ -331,7 +306,6 @@
 
       <div class="cta-row" id="trial">
         <a href="https://apps.apple.com/gb/app/myadminmate/id6770516653" class="btn-primary" id="trialBtn">Start your free trial →</a>
-        <button class="btn-secondary" id="watchQuoteBtn"><span class="play-dot">▶</span> Watch a real quote</button>
       </div>
 
       <div class="fine-print">No credit card needed. Works on iPhone and Android.</div>
@@ -388,25 +362,9 @@
           <div class="btn-check">Check and send to customer</div>
         </div>
       </div>
+      <a href="how-it-works.html" class="btn-secondary" id="howItWorksBtn"><span class="play-dot">▶</span> See it in action</a>
     </div>
   </section>
-
-  <!-- Video popup modal -->
-  <div class="video-modal" id="videoModal">
-    <div class="video-modal-inner">
-      <button class="video-modal-close" id="videoModalClose" aria-label="Close video">✕</button>
-      <div class="video-modal-frame-wrap">
-        <iframe id="videoFrame"
-          src=""
-          title="Real quote example"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-  </div>
 
   <!-- Store picker modal (desktop / undetected platforms) -->
   <div class="store-modal" id="storeModal">
@@ -441,32 +399,8 @@
     }
   }
 
-  // Video popup — YouTube Short opens in an in-page modal, site stays open
-  var VIDEO_ID = 'x79UeU2F67Y';
-  var modal = document.getElementById('videoModal');
-  var frame = document.getElementById('videoFrame');
-  var openBtn = document.getElementById('watchQuoteBtn');
-  var closeBtn = document.getElementById('videoModalClose');
-
-  function openModal(){
-    track('watch_video', 'hero_video_button');
-    frame.src = 'https://www.youtube.com/embed/' + VIDEO_ID + '?autoplay=1&rel=0';
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal(){
-    modal.classList.remove('open');
-    frame.src = '';
-    document.body.style.overflow = '';
-  }
-
-  openBtn.addEventListener('click', openModal);
-  closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', function(e){
-    if(e.target === modal) closeModal();
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeModal();
+  document.getElementById('howItWorksBtn').addEventListener('click', function(){
+    track('see_how_it_works', 'hero_phone_button');
   });
 
   // Smart store redirect — "Start your free trial" sends mobile visitors
