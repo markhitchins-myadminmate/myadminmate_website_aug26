@@ -122,6 +122,17 @@
     display:inline-flex;align-items:center;gap:8px;text-decoration:none;
   }
   .btn-primary:active{transform:scale(.98);}
+  .btn-secondary{
+    background:#fff;color:var(--ink);font-weight:600;font-size:14px;
+    padding:14px 22px;border-radius:999px;border:1.5px solid var(--border);
+    display:inline-flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;
+    margin-top:6px;
+  }
+  .btn-secondary:active{transform:scale(.98);}
+  .play-dot{
+    width:18px;height:18px;border-radius:50%;background:var(--ink);
+    display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:8px;flex-shrink:0;
+  }
 
   .store-modal{
     display:none;position:fixed;inset:0;z-index:1000;
@@ -213,6 +224,10 @@
   <div class="content-wrap">
     <h2 class="subsection-heading">First time using the app</h2>
     <p>We've included a <b>Coach Me</b> feature to guide you through your first steps. Just follow the on-screen prompts — they'll show you everything you need to know.</p>
+
+    <h2 class="subsection-heading">Watch how it works</h2>
+    <p>Six short videos take you from signing up to sending your first quote and scheduling the job. Each one takes less than a minute.</p>
+    <a href="how-it-works.html" class="btn-secondary"><span class="play-dot">▶</span> Watch the videos</a>
 
     <h2 class="subsection-heading">Tips</h2>
     <ol class="tips-list">
