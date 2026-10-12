@@ -212,7 +212,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-question"><span>How much is the monthly subscription?</span><span class="chevron">▼</span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">When your FREE trial ends, the app will prompt you to start a monthly subscription. Simply follow the on-screen steps to subscribe securely through your Apple App Store or Google Play Store account and continue enjoying full access to MyAdminMate.<br><br>MyAdminMate subscription is £19.99 per month for the next 12 months.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">When you download the app you will have access to FREE quotes – up to a maximum of 20 per month. You will be able to create customers, add your branding to your quotes, create your quotes and send to your customers – FREE of charge.<br><br>When you need further tools / features or if you run out of FREE quotes you will need to subscribe to Pro Level in order to access our Toolbox: Scheduling, Expenses, Additional Photo Storage, Invoicing, Find It (our materials locator) and any further features that we have in development once they are released. These additional features allow you to manage your whole business from the app.<br><br>The charge for Pro access subscription is £19.99 per month.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question"><span>Do you do discounts for multiple users?</span><span class="chevron">▼</span></button>
@@ -227,29 +227,8 @@
         <div class="faq-answer"><div class="faq-answer-inner">Yes, you can access your app overseas, but the app is designed for end-customers that are residing in the UK (see above). Please contact support if you would like further information.</div></div>
       </div>
     </div>
-
-    <div class="cta-band">
-      <h3>Still have questions?</h3>
-      <p>Start your free 14-day trial and see it for yourself — no credit card needed.</p>
-      <a href="https://apps.apple.com/gb/app/myadminmate/id6770516653" class="btn-primary" id="trialBtn">Start your free 14-day trial →</a>
-    </div>
   </div>
 
-  <div class="store-modal" id="storeModal">
-    <div class="store-modal-inner">
-      <button class="store-modal-close" id="storeModalClose" aria-label="Close">✕</button>
-      <p class="store-modal-title">Get MyAdminMate</p>
-      <p class="store-modal-sub">Your free 14-day trial starts in the app. Choose your store to continue.</p>
-      <div class="store-modal-badges">
-        <a href="https://apps.apple.com/gb/app/myadminmate/id6770516653" target="_blank" rel="noopener">
-          <img src="assets/apple-badge.svg" alt="Download on the App Store">
-        </a>
-        <a href="https://play.google.com/store/apps/details?id=com.myadminmate.app" target="_blank" rel="noopener">
-          <img src="assets/google-badge.svg" alt="Get it on Google Play">
-        </a>
-      </div>
-    </div>
-  </div>
 
 <script>
   var navToggle = document.getElementById('navToggle');
@@ -259,52 +238,6 @@
     navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 
-  var APPLE_URL = 'https://apps.apple.com/gb/app/myadminmate/id6770516653';
-  var GOOGLE_URL = 'https://play.google.com/store/apps/details?id=com.myadminmate.app';
-  var trialBtn = document.getElementById('trialBtn');
-  var storeModal = document.getElementById('storeModal');
-  var storeModalClose = document.getElementById('storeModalClose');
-
-  function detectStorePlatform(){
-    var ua = navigator.userAgent || '';
-    var platform = navigator.platform || '';
-    var maxTouch = navigator.maxTouchPoints || 0;
-    var isIOS = /iPhone|iPad|iPod/.test(ua) || (platform === 'MacIntel' && maxTouch > 1);
-    var isAndroid = /Android/.test(ua);
-    if(isIOS) return 'ios';
-    if(isAndroid) return 'android';
-    return 'unknown';
-  }
-
-  function openStoreModal(){
-    storeModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeStoreModal(){
-    storeModal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  trialBtn.addEventListener('click', function(e){
-    var platform = detectStorePlatform();
-    if(platform === 'ios'){
-      e.preventDefault();
-      window.open(APPLE_URL, '_blank', 'noopener');
-    } else if(platform === 'android'){
-      e.preventDefault();
-      window.open(GOOGLE_URL, '_blank', 'noopener');
-    } else {
-      e.preventDefault();
-      openStoreModal();
-    }
-  });
-  storeModalClose.addEventListener('click', closeStoreModal);
-  storeModal.addEventListener('click', function(e){
-    if(e.target === storeModal) closeStoreModal();
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeStoreModal();
-  });
 
   document.querySelectorAll('.faq-question').forEach(function(btn){
     btn.addEventListener('click', function(){
