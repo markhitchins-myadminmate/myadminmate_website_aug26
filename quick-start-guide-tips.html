@@ -218,7 +218,7 @@
     <div class="page-eyebrow">Quick start</div>
     <h1>Quick start guide &amp; tips</h1>
     <p>MyAdminMate is designed to be simple and easy to use.</p>
-    <p>Download the app from the Apple App Store (iPhone/iOS) or Google Play Store (Android), then you're ready to get started.</p>
+    <p>Download the app from the Apple App Store (iPhone/iOS) or Google Play Store (Android), then you're ready to get started, creating your FREE quotes straight away.</p>
   </section>
 
   <div class="content-wrap">
@@ -252,29 +252,8 @@
     <p class="closing-note">That's it! No lengthy manuals or complicated setup. MyAdminMate is built to make admin quick and easy for busy tradespeople. We hope you enjoy using it.</p>
     <p class="closing-note">If you need any help, please contact <a href="mailto:support@myadminmate.com">support@myadminmate.com</a>.</p>
     <p class="closing-note">Thank you.</p>
-
-    <div class="cta-band">
-      <h3>Ready to get started?</h3>
-      <p>Start your free 14-day trial — no credit card needed.</p>
-      <a href="https://apps.apple.com/gb/app/myadminmate/id6770516653" class="btn-primary" id="trialBtn">Start your free 14-day trial →</a>
-    </div>
   </div>
 
-  <div class="store-modal" id="storeModal">
-    <div class="store-modal-inner">
-      <button class="store-modal-close" id="storeModalClose" aria-label="Close">✕</button>
-      <p class="store-modal-title">Get MyAdminMate</p>
-      <p class="store-modal-sub">Your free 14-day trial starts in the app. Choose your store to continue.</p>
-      <div class="store-modal-badges">
-        <a href="https://apps.apple.com/gb/app/myadminmate/id6770516653" target="_blank" rel="noopener">
-          <img src="assets/apple-badge.svg" alt="Download on the App Store">
-        </a>
-        <a href="https://play.google.com/store/apps/details?id=com.myadminmate.app" target="_blank" rel="noopener">
-          <img src="assets/google-badge.svg" alt="Get it on Google Play">
-        </a>
-      </div>
-    </div>
-  </div>
 
 <script>
   var navToggle = document.getElementById('navToggle');
@@ -284,52 +263,6 @@
     navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 
-  var APPLE_URL = 'https://apps.apple.com/gb/app/myadminmate/id6770516653';
-  var GOOGLE_URL = 'https://play.google.com/store/apps/details?id=com.myadminmate.app';
-  var trialBtn = document.getElementById('trialBtn');
-  var storeModal = document.getElementById('storeModal');
-  var storeModalClose = document.getElementById('storeModalClose');
-
-  function detectStorePlatform(){
-    var ua = navigator.userAgent || '';
-    var platform = navigator.platform || '';
-    var maxTouch = navigator.maxTouchPoints || 0;
-    var isIOS = /iPhone|iPad|iPod/.test(ua) || (platform === 'MacIntel' && maxTouch > 1);
-    var isAndroid = /Android/.test(ua);
-    if(isIOS) return 'ios';
-    if(isAndroid) return 'android';
-    return 'unknown';
-  }
-
-  function openStoreModal(){
-    storeModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeStoreModal(){
-    storeModal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  trialBtn.addEventListener('click', function(e){
-    var platform = detectStorePlatform();
-    if(platform === 'ios'){
-      e.preventDefault();
-      window.open(APPLE_URL, '_blank', 'noopener');
-    } else if(platform === 'android'){
-      e.preventDefault();
-      window.open(GOOGLE_URL, '_blank', 'noopener');
-    } else {
-      e.preventDefault();
-      openStoreModal();
-    }
-  });
-  storeModalClose.addEventListener('click', closeStoreModal);
-  storeModal.addEventListener('click', function(e){
-    if(e.target === storeModal) closeStoreModal();
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeStoreModal();
-  });
 </script>
 </body>
 </html>
